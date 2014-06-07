@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package control.deadlygui.ui;
+package deadlygui.controls.ui;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.export.InputCapsule;

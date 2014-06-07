@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package control.deadlygui.ui;
+package deadlygui.controls.ui;
 
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
@@ -22,8 +22,9 @@ import java.io.IOException;
  *
  * @author Kamran
  */
-public class ButtonControl extends AbstractControl{
+public class ButtonControl implements Control{
 
+    private Spatial spatial;
     private LayerControl layerControl = new LayerControl();
     private Picture image = new Picture();
     private Picture image_Hover = new Picture();
@@ -48,8 +49,7 @@ public class ButtonControl extends AbstractControl{
         this.size = size;
     }
 
-    @Override
-    protected void controlUpdate(float tpf) {
+    public void update(float tpf) {
         if(!init){
             layerControl = spatial.getControl(LayerControl.class);
             init();
@@ -71,13 +71,10 @@ public class ButtonControl extends AbstractControl{
         }
     }
 
-    
-    @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) {
-        //Only needed for rendering-related operations,
-        //not called when spatial is culled.
+    public void render(RenderManager rm, ViewPort vp) {
+        
     }
-
+    
     private void init(){
         image = new Picture(UID);
         image.setImage(layerControl.getApp().getAssetManager(), imageLocation, true);
@@ -102,16 +99,12 @@ public class ButtonControl extends AbstractControl{
         return control;
     }
 
-    @Override
     public void read(JmeImporter im) throws IOException {
-        super.read(im);
         InputCapsule in = im.getCapsule(this);
         //this.value = in.readFloat("name", defaultValue);
     }
 
-    @Override
     public void write(JmeExporter ex) throws IOException {
-        super.write(ex);
         OutputCapsule out = ex.getCapsule(this);
         //out.write(this.value, "name", defaultValue);
     }
@@ -129,6 +122,12 @@ public class ButtonControl extends AbstractControl{
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
+    public void setSpatial(Spatial spatial) {
+        this.spatial = spatial;
+    }
+
+    
 
 
 }

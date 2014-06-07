@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package control.deadlygui.ui;
+package deadlygui.controls.ui;
 
 import com.jme3.asset.AssetManager;
 import com.jme3.export.InputCapsule;
@@ -25,8 +25,9 @@ import java.io.IOException;
  *
  * @author Kamran
  */
-public class LabelControl extends AbstractControl{
+public class LabelControl implements Control{
 
+    private Spatial spatial;
     private LayerControl layerControl = new LayerControl();
     private Picture image = new Picture();
     private String imageLocation = "";
@@ -46,8 +47,7 @@ public class LabelControl extends AbstractControl{
         this.size = size;
     }
 
-    @Override
-    protected void controlUpdate(float tpf) {
+    public void update(float tpf) {
         if(!init){
             layerControl = spatial.getControl(LayerControl.class);
             init();
@@ -55,10 +55,8 @@ public class LabelControl extends AbstractControl{
         }
     }
 
-    @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) {
-        //Only needed for rendering-related operations,
-        //not called when spatial is culled.
+    public void render(RenderManager rm, ViewPort vp) {
+        
     }
 
     private void init(){
@@ -77,26 +75,19 @@ public class LabelControl extends AbstractControl{
         return control;
     }
 
-    @Override
-    public void read(JmeImporter im) throws IOException {
-        super.read(im);
-        InputCapsule in = im.getCapsule(this);
-        //this.value = in.readFloat("name", defaultValue);
+    public void setSpatial(Spatial spatial) {
+        this.spatial = spatial;
     }
 
-    @Override
     public void write(JmeExporter ex) throws IOException {
-        super.write(ex);
         OutputCapsule out = ex.getCapsule(this);
         //out.write(this.value, "name", defaultValue);
     }
 
-    /**
-     * @return the image
-     */
-    public Picture getImage() {
-        return image;
+    public void read(JmeImporter im) throws IOException {
+        InputCapsule in = im.getCapsule(this);
+        //this.value = in.readFloat("name", defaultValue);
     }
 
-
+    
 }

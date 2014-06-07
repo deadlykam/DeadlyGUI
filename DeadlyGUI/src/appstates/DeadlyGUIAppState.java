@@ -15,14 +15,13 @@ import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.math.Vector2f;
-import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.system.AppSettings;
-import control.deadlygui.ui.ButtonControl;
-import control.deadlygui.ui.LabelControl;
-import control.deadlygui.ui.LayerControl;
+import deadlygui.controls.ui.ButtonControl;
+import deadlygui.controls.ui.LabelControl;
+import deadlygui.controls.ui.LayerControl;
 
 /**
  *
