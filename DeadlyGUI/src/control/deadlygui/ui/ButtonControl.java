@@ -5,7 +5,6 @@
 
 package control.deadlygui.ui;
 
-import com.jme3.asset.AssetManager;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -13,11 +12,9 @@ import com.jme3.export.OutputCapsule;
 import com.jme3.math.Vector2f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
-import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
-import com.jme3.system.AppSettings;
 import com.jme3.ui.Picture;
 import java.io.IOException;
 
@@ -25,22 +22,27 @@ import java.io.IOException;
  *
  * @author Kamran
  */
-public class LabelControl extends AbstractControl{
+public class ButtonControl extends AbstractControl{
 
     private LayerControl layerControl = new LayerControl();
     private Picture image = new Picture();
+    private Picture image_Hover = new Picture();
     private String imageLocation = "";
+    private String hover_ImageLocation = "";
     private String UID = "";
     private Vector2f position = new Vector2f();
     private Vector2f size = new Vector2f();
+    private boolean selected = false;
     
     private boolean init = false;
     
-    public LabelControl(){}
+    public ButtonControl(){}
     
-    public LabelControl(String imageLocation, String UID, 
-            Vector2f position, Vector2f size){
+    public ButtonControl(String imageLocation, String hover_ImageLocation,
+                         String UID, 
+                         Vector2f position, Vector2f size){
         this.imageLocation = imageLocation;
+        this.hover_ImageLocation = hover_ImageLocation;
         this.UID = UID;
         this.position = position;
         this.size = size;
@@ -52,9 +54,24 @@ public class LabelControl extends AbstractControl{
             layerControl = spatial.getControl(LayerControl.class);
             init();
             init = true;
+        }else{
+            if(layerControl.isMouseLeftClick()){
+                if(layerControl.getMousePosition().x >= (layerControl.getSettings().getWidth() * position.x) && 
+                   layerControl.getMousePosition().x <= ((layerControl.getSettings().getWidth() * position.x) + (layerControl.getSettings().getWidth() * size.x)) && 
+                   layerControl.getMousePosition().y >= (layerControl.getSettings().getHeight()* position.y) && 
+                   layerControl.getMousePosition().y <= ((layerControl.getSettings().getHeight()* position.y) + (layerControl.getSettings().getHeight()* size.y))){
+                    image_Hover.setCullHint(Spatial.CullHint.Dynamic);
+                    image.setCullHint(Spatial.CullHint.Always);
+                }
+//                System.out.println("Button Click");
+            }else{
+                image_Hover.setCullHint(Spatial.CullHint.Always);
+                image.setCullHint(Spatial.CullHint.Dynamic);
+            }
         }
     }
 
+    
     @Override
     protected void controlRender(RenderManager rm, ViewPort vp) {
         //Only needed for rendering-related operations,
@@ -68,11 +85,19 @@ public class LabelControl extends AbstractControl{
         image.setHeight(layerControl.getSettings().getHeight() * size.getY());
         image.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
         layerControl.getApp().getGuiNode().attachChild(image);
+        
+        image_Hover = new Picture(UID + "_hover");
+        image_Hover.setImage(layerControl.getApp().getAssetManager(), hover_ImageLocation, true);
+        image_Hover.setWidth(layerControl.getSettings().getWidth() * size.getX());
+        image_Hover.setHeight(layerControl.getSettings().getHeight() * size.getY());
+        image_Hover.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
+        image_Hover.setCullHint(Spatial.CullHint.Always);
+        layerControl.getApp().getGuiNode().attachChild(image_Hover);
     }
     
     @Override
     public Control cloneForSpatial(Spatial spatial) {
-        LabelControl control = new LabelControl();
+        ButtonControl control = new ButtonControl();
         control.setSpatial(spatial);
         return control;
     }
@@ -92,10 +117,17 @@ public class LabelControl extends AbstractControl{
     }
 
     /**
-     * @return the image
+     * @return the selected
      */
-    public Picture getImage() {
-        return image;
+    public boolean isSelected() {
+        return selected;
+    }
+
+    /**
+     * @param selected the selected to set
+     */
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
 

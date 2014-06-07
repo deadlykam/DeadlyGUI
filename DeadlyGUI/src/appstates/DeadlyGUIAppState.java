@@ -10,11 +10,15 @@ import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
 import com.jme3.input.InputManager;
+import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
+import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.math.Vector2f;
+import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
+import control.deadlygui.ui.ButtonControl;
 import control.deadlygui.ui.LabelControl;
 import control.deadlygui.ui.LayerControl;
 
@@ -31,6 +35,8 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     private Camera            cam;
     private AppSettings       settings;
 
+    LayerControl layer;
+    
     public DeadlyGUIAppState(AppSettings settings){
         this.settings = settings;
     }
@@ -45,22 +51,43 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         this.stateManager = this.app.getStateManager();
         this.cam          = this.app.getCamera();
         
+        setupKeys();
         setupHUD();
     }
     
+    private void setupKeys(){
+        inputManager.addMapping("LeftClick", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
+        
+        inputManager.addListener(this, "LeftClick");
+    }
+    
     private void setupHUD(){
-        LayerControl layer = new LayerControl(app, settings);
+        layer = new LayerControl(app, settings);
         guiNode.addControl(layer);
         
         LabelControl label1 = new LabelControl("Textures/DeadlyGUIImages/DeadlyLabel.png",
                                                 "Label1",
                                                 new Vector2f(.5f, .5f),
-                                                new Vector2f(.5f, .4f));
+                                                new Vector2f(.2f, .1f));
+        
+        ButtonControl button1 = new ButtonControl("Textures/DeadlyGUIImages/DeadlyButton.png",
+                                                  "Textures/DeadlyGUIImages/DeadlyButton_H.png",
+                                                  "Button1", 
+                                                   new Vector2f(.1f, .1f),
+                                                   new Vector2f(.2f, .1f));
         
         guiNode.addControl(label1);
+        guiNode.addControl(button1);
     }
     
     public void onAction(String name, boolean isPressed, float tpf) {
-        
+        if(name.equals("LeftClick")){
+            if(isPressed){
+                layer.setMouseLeftClick(true);
+                layer.setMousePosition(inputManager.getCursorPosition());
+            }else{
+                layer.setMouseLeftClick(false);
+            }
+        }
     }
 }

@@ -24,6 +24,10 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
+        mouseInput.setCursorVisible(true);
+        flyCam.setEnabled(false);
+        flyCam.setMoveSpeed(30f);
+        
         setupAppStateClasses();
         loadDeadlyGUI();
     }

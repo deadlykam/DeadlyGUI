@@ -10,6 +10,7 @@ import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.export.OutputCapsule;
+import com.jme3.math.Vector2f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Spatial;
@@ -28,6 +29,8 @@ public class LayerControl extends AbstractControl{
 
     private SimpleApplication app;
     private AppSettings settings;
+    private boolean mouseLeftClick = false;
+    private Vector2f mousePosition = new Vector2f();
     
     public LayerControl(){}
 
@@ -95,6 +98,34 @@ public class LayerControl extends AbstractControl{
      */
     public void setSettings(AppSettings settings) {
         this.settings = settings;
+    }
+
+    /**
+     * @return the mouseLeftClick
+     */
+    public boolean isMouseLeftClick() {
+        return mouseLeftClick;
+    }
+
+    /**
+     * @param mouseLeftClick the mouseLeftClick to set
+     */
+    public void setMouseLeftClick(boolean mouseLeftClick) {
+        this.mouseLeftClick = mouseLeftClick;
+    }
+
+    /**
+     * @return the mousePosition
+     */
+    public Vector2f getMousePosition() {
+        return mousePosition;
+    }
+
+    /**
+     * @param mousePosition the mousePosition to set
+     */
+    public void setMousePosition(Vector2f mousePosition) {
+        this.mousePosition = mousePosition;
     }
 
 
