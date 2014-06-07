@@ -16,6 +16,7 @@ import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
 import control.deadlygui.ui.LabelControl;
+import control.deadlygui.ui.LayerControl;
 
 /**
  *
@@ -48,9 +49,13 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     }
     
     private void setupHUD(){
-        LabelControl label1 = new LabelControl(guiNode, assetManager, settings,
-                "Textures/DeadlyGUIImages/DeadlyLabel.png", "Label1",
-                new Vector2f(.5f, .5f), new Vector2f(.5f, .4f));
+        LayerControl layer = new LayerControl(app, settings);
+        guiNode.addControl(layer);
+        
+        LabelControl label1 = new LabelControl("Textures/DeadlyGUIImages/DeadlyLabel.png",
+                                                "Label1",
+                                                new Vector2f(.5f, .5f),
+                                                new Vector2f(.5f, .4f));
         
         guiNode.addControl(label1);
     }

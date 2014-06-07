@@ -27,34 +27,32 @@ import java.io.IOException;
  */
 public class LabelControl extends AbstractControl{
 
-    AssetManager assetManager;
-    private Node guiNode;
-    AppSettings settings;
+    private LayerControl layerControl = new LayerControl();
     private Picture image = new Picture();
-    String imageLocation = "";
-    String UID = "";
-    Vector2f position = new Vector2f();
-    Vector2f size = new Vector2f();
+    private String imageLocation = "";
+    private String UID = "";
+    private Vector2f position = new Vector2f();
+    private Vector2f size = new Vector2f();
+    
+    private boolean init = false;
     
     public LabelControl(){}
     
-    public LabelControl(Node guiNode, AssetManager assetManager, AppSettings settings, String imageLocation, String UID, 
+    public LabelControl(String imageLocation, String UID, 
             Vector2f position, Vector2f size){
-        this.guiNode = guiNode;
-        this.assetManager = assetManager;
-        this.settings = settings;
         this.imageLocation = imageLocation;
         this.UID = UID;
         this.position = position;
         this.size = size;
-        
-        init();
     }
 
     @Override
     protected void controlUpdate(float tpf) {
-        //TODO: add code that controls Spatial,
-        //e.g. spatial.rotate(tpf,tpf,tpf);
+        if(!init){
+            layerControl = spatial.getControl(LayerControl.class);
+            init();
+            init = true;
+        }
     }
 
     @Override
@@ -65,13 +63,11 @@ public class LabelControl extends AbstractControl{
 
     private void init(){
         image = new Picture(UID);
-        image.setImage(assetManager, imageLocation, true);
-        image.setWidth(settings.getWidth() * size.getX());
-        image.setHeight(settings.getHeight() * size.getY());
-        image.setPosition(settings.getWidth() * position.x, settings.getHeight() * position.y);
-//        System.out.println("Settings Width: " + settings.getH);
-        guiNode.attachChild(getImage());
-        System.out.println("Image Attached!");
+        image.setImage(layerControl.getApp().getAssetManager(), imageLocation, true);
+        image.setWidth(layerControl.getSettings().getWidth() * size.getX());
+        image.setHeight(layerControl.getSettings().getHeight() * size.getY());
+        image.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
+        layerControl.getApp().getGuiNode().attachChild(getImage());
     }
     
     @Override
