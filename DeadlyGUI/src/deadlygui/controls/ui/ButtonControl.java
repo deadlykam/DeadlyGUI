@@ -13,42 +13,42 @@ import com.jme3.math.Vector2f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Spatial;
-import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
 import com.jme3.ui.Picture;
+import deadlygui.Effects;
 import java.io.IOException;
 
 /**
  *
  * @author Kamran
  */
-public class ButtonControl implements Control{
-
-    private Spatial spatial;
-    private LayerControl layerControl = new LayerControl();
-    private Picture image = new Picture();
-    private Picture image_Hover = new Picture();
-    private String imageLocation = "";
-    private String hover_ImageLocation = "";
-    private String UID = "";
-    private Vector2f position = new Vector2f();
-    private Vector2f size = new Vector2f();
+public class ButtonControl extends Effects implements Control{
+    
     private boolean selected = false;
+    private String target = "";
     
     private boolean init = false;
     
-    public ButtonControl(){}
     
-    public ButtonControl(String imageLocation, String hover_ImageLocation,
+    public ButtonControl(String imageLocation,
+                         String hover_ImageLocation,
                          String UID, 
-                         Vector2f position, Vector2f size){
-        this.imageLocation = imageLocation;
-        this.hover_ImageLocation = hover_ImageLocation;
-        this.UID = UID;
-        this.position = position;
-        this.size = size;
+                         Vector2f position,
+                         Vector2f size){
+        super(imageLocation, hover_ImageLocation, UID, position, size);
     }
 
+    public ButtonControl(String imageLocation,
+                         String hover_ImageLocation,
+                         String UID,
+                         String target,
+                         Vector2f position,
+                         Vector2f size){
+        super(imageLocation, hover_ImageLocation, UID, position, size);
+        
+        this.target = target;
+    }
+    
     public void update(float tpf) {
         if(!init){
             layerControl = spatial.getControl(LayerControl.class);
@@ -62,6 +62,17 @@ public class ButtonControl implements Control{
                    layerControl.getMousePosition().y <= ((layerControl.getSettings().getHeight()* position.y) + (layerControl.getSettings().getHeight()* size.y))){
                     image_Hover.setCullHint(Spatial.CullHint.Dynamic);
                     image.setCullHint(Spatial.CullHint.Always);
+                    
+                    if(!target.equals("")){
+                        for(int i = 0; i < spatial.getNumControls(); i++){
+                            if(spatial.getControl(i) instanceof LabelControl){
+                                LabelControl lc = (LabelControl) spatial.getControl(i);
+                                if(lc != null){
+                                    ((Effects) lc).event_ButtonEffect();
+                                }
+                            }
+                        }
+                    }
                 }
 //                System.out.println("Button Click");
             }else{
@@ -94,9 +105,7 @@ public class ButtonControl implements Control{
     
     @Override
     public Control cloneForSpatial(Spatial spatial) {
-        ButtonControl control = new ButtonControl();
-        control.setSpatial(spatial);
-        return control;
+        return this;
     }
 
     public void read(JmeImporter im) throws IOException {

@@ -19,32 +19,20 @@ import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
 import com.jme3.system.AppSettings;
 import com.jme3.ui.Picture;
+import deadlygui.Effects;
 import java.io.IOException;
 
 /**
  *
  * @author Kamran
  */
-public class LabelControl implements Control{
-
-    private Spatial spatial;
-    private LayerControl layerControl = new LayerControl();
-    private Picture image = new Picture();
-    private String imageLocation = "";
-    private String UID = "";
-    private Vector2f position = new Vector2f();
-    private Vector2f size = new Vector2f();
+public class LabelControl extends Effects implements Control{
     
     private boolean init = false;
     
-    public LabelControl(){}
-    
     public LabelControl(String imageLocation, String UID, 
             Vector2f position, Vector2f size){
-        this.imageLocation = imageLocation;
-        this.UID = UID;
-        this.position = position;
-        this.size = size;
+        super(imageLocation, UID, position, size);
     }
 
     public void update(float tpf) {
@@ -52,6 +40,8 @@ public class LabelControl implements Control{
             layerControl = spatial.getControl(LayerControl.class);
             init();
             init = true;
+        }else{
+            super.update_Effect(tpf);
         }
     }
 
@@ -66,13 +56,13 @@ public class LabelControl implements Control{
         image.setHeight(layerControl.getSettings().getHeight() * size.getY());
         image.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
         layerControl.getApp().getGuiNode().attachChild(image);
+        
+        checkVisible();
     }
     
     @Override
     public Control cloneForSpatial(Spatial spatial) {
-        LabelControl control = new LabelControl();
-        control.setSpatial(spatial);
-        return control;
+        return this;
     }
 
     public void setSpatial(Spatial spatial) {

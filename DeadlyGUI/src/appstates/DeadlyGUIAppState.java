@@ -19,6 +19,7 @@ import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.system.AppSettings;
+import deadlygui.AllEnums;
 import deadlygui.controls.ui.ButtonControl;
 import deadlygui.controls.ui.LabelControl;
 import deadlygui.controls.ui.LayerControl;
@@ -40,6 +41,8 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     
     LayerControl layer;
     public ChaseCamera chaseCamera;
+    
+    private boolean leftClick = false;
     
     public DeadlyGUIAppState(AppSettings settings){
         this.settings = settings;
@@ -88,10 +91,14 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
                                                 "Label1",
                                                 new Vector2f(.5f, .5f),
                                                 new Vector2f(.2f, .1f));
+        label1.setButtonEffect(AllEnums.ButtonEffect.APPEAR_DISAPPEAR);
+//        label1.setVisible(false);
+        
         
         ButtonControl button1 = new ButtonControl("Textures/DeadlyGUIImages/DeadlyButton.png",
                                                   "Textures/DeadlyGUIImages/DeadlyButton_H.png",
-                                                  "Button1", 
+                                                  "Button1",
+                                                  "Label1",
                                                    new Vector2f(.1f, .1f),
                                                    new Vector2f(.2f, .1f));
         
@@ -100,13 +107,19 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     }
     
     public void onAction(String name, boolean isPressed, float tpf) {
-        if(name.equals("LeftClick")){
-            if(isPressed){
-                layer.setMouseLeftClick(true);
-                layer.setMousePosition(inputManager.getCursorPosition());
-            }else{
-                layer.setMouseLeftClick(false);
-            }
+        if(name.equals("LeftClick") && !isPressed){
+            leftClick = true;
+        }
+    }
+    
+    @Override
+    public void update(float tpf) {
+        if(leftClick){
+            layer.setMouseLeftClick(true);
+            layer.setMousePosition(inputManager.getCursorPosition());
+            leftClick = false;
+        }else{
+            layer.setMouseLeftClick(false);
         }
     }
 }

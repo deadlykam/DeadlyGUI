@@ -41,8 +41,6 @@ public class LayerControl extends AbstractControl{
     
     @Override
     protected void controlUpdate(float tpf) {
-        //TODO: add code that controls Spatial,
-        //e.g. spatial.rotate(tpf,tpf,tpf);
     }
 
     @Override

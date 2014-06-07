@@ -10,8 +10,11 @@ package deadlygui;
  */
 public class AllEnums {
     
-    public enum Effects{
+    public enum ButtonEffect{
         NONE, APPEAR_DISAPPEAR, FADE, MOVE, PULSE, SCROLL
     }
     
+    public enum ParticleEffect{
+        NONE
+    }
 }
