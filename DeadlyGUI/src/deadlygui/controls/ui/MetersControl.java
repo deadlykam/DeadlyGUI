@@ -13,8 +13,11 @@ import com.jme3.math.Vector2f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
 import com.jme3.ui.Picture;
+import deadlygui.AllEnums;
+import deadlygui.AllEnums.Effect;
 import deadlygui.Effects;
 import java.io.IOException;
 
@@ -22,68 +25,53 @@ import java.io.IOException;
  *
  * @author Kamran
  */
-public class ButtonControl extends Effects implements Control{
-    
-    private boolean selected = false;
-    private String target = "";
+public class MetersControl extends Effects implements Control{
+
+    private float percentage = 1.0f;
     
     private boolean init = false;
     
-    
-    public ButtonControl(String defaultImage,
-                         String clickImage,
+    public MetersControl(String background,
+                         String staticBar,
+                         String movableBar,
                          String UID, 
                          Vector2f position,
                          Vector2f size){
-        super(defaultImage, clickImage, UID, position, size);
+        super(background, staticBar, movableBar, UID, position, size);
     }
 
-    public ButtonControl(String defaultImage,
-                         String clickImage,
-                         String UID,
-                         String target,
-                         Vector2f position,
-                         Vector2f size){
-        super(defaultImage, clickImage, UID, position, size);
-        
-        this.target = target;
-    }
-    
     public void update(float tpf) {
         if(!init){
             layerControl = spatial.getControl(LayerControl.class);
             init();
             init = true;
         }else{
-            if(layerControl.isMouseLeftClick()){
-                if(layerControl.getMousePosition().x >= (layerControl.getSettings().getWidth() * position.x) && 
-                   layerControl.getMousePosition().x <= ((layerControl.getSettings().getWidth() * position.x) + (layerControl.getSettings().getWidth() * size.x)) && 
-                   layerControl.getMousePosition().y >= (layerControl.getSettings().getHeight()* position.y) && 
-                   layerControl.getMousePosition().y <= ((layerControl.getSettings().getHeight()* position.y) + (layerControl.getSettings().getHeight()* size.y))){
-                    image2.setCullHint(Spatial.CullHint.Dynamic);
-                    image.setCullHint(Spatial.CullHint.Always);
-                    
-                    if(!target.equals("")){
-                        for(int i = 0; i < spatial.getNumControls(); i++){
-                            if(spatial.getControl(i) instanceof LabelControl){
-                                LabelControl lc = (LabelControl) spatial.getControl(i);
-                                if(lc != null){
-                                    ((Effects) lc).event_ButtonEffect();
-                                }
-                            }
-                        }
-                    }
-                }
-//                System.out.println("Button Click");
-            }else{
+            if(percentage >= 1.0f){
+                image3.setCullHint(Spatial.CullHint.Always);
+            }else if(percentage > 0){
+               image3.setCullHint(Spatial.CullHint.Dynamic);
+               image2.setCullHint(Spatial.CullHint.Dynamic);
+            }else if(percentage <= 0){
                 image2.setCullHint(Spatial.CullHint.Always);
-                image.setCullHint(Spatial.CullHint.Dynamic);
             }
+            
+            moveBar();
         }
     }
 
     public void render(RenderManager rm, ViewPort vp) {
         
+    }
+
+    private void moveBar(){
+        if(effect == Effect.HORIZONTAL){
+            float newSize = (layerControl.getSettings().getWidth() * size.getX()) - ((layerControl.getSettings().getWidth() * size.getX()) * percentage);
+            
+            image3.setWidth(newSize);
+        }else if(effect == Effect.HORIZONTAL){
+            float newSize = (layerControl.getSettings().getHeight()* size.getY()) - ((layerControl.getSettings().getHeight()* size.getY()) * percentage);
+            image3.setHeight(newSize);
+        }
     }
     
     private void init(){
@@ -94,13 +82,19 @@ public class ButtonControl extends Effects implements Control{
         image.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
         layerControl.getApp().getGuiNode().attachChild(image);
         
-        image2 = new Picture(UID + "_hover");
+        image2 = new Picture(UID + "_HealthBar");
         image2.setImage(layerControl.getApp().getAssetManager(), imageLocation2, true);
         image2.setWidth(layerControl.getSettings().getWidth() * size.getX());
         image2.setHeight(layerControl.getSettings().getHeight() * size.getY());
         image2.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
-        image2.setCullHint(Spatial.CullHint.Always);
         layerControl.getApp().getGuiNode().attachChild(image2);
+        
+        image3 = new Picture(UID + "_Bar");
+        image3.setImage(layerControl.getApp().getAssetManager(), imageLocation3, true);
+        image3.setWidth(layerControl.getSettings().getWidth() * size.getX());
+        image3.setHeight(layerControl.getSettings().getHeight() * size.getY());
+        image3.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
+        layerControl.getApp().getGuiNode().attachChild(image3);
     }
     
     @Override
@@ -118,25 +112,22 @@ public class ButtonControl extends Effects implements Control{
         //out.write(this.value, "name", defaultValue);
     }
 
-    /**
-     * @return the selected
-     */
-    public boolean isSelected() {
-        return selected;
-    }
-
-    /**
-     * @param selected the selected to set
-     */
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
-
     public void setSpatial(Spatial spatial) {
         this.spatial = spatial;
     }
 
-    
+    /**
+     * @return the percentage
+     */
+    public float getPercentage() {
+        return percentage;
+    }
 
+    /**
+     * @param percentage the percentage to set
+     */
+    public void setPercentage(float percentage) {
+        this.percentage = percentage;
+    }
 
 }

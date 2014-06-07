@@ -5,14 +5,14 @@
 package deadlygui;
 
 import com.jme3.math.Vector2f;
-import deadlygui.AllEnums.ButtonEffect;
+import deadlygui.AllEnums.Effect;
 
 /**
  *
  * @author Kamran
  */
 public class Effects extends Elements{
-    private ButtonEffect buttonEffect = ButtonEffect.NONE;
+    protected Effect effect = Effect.NONE;
     
     public Effects(String imageLocation,
                    String UID, 
@@ -29,12 +29,21 @@ public class Effects extends Elements{
         super(imageLocation, hover_ImageLocation, UID, position, size);
     }
     
+    public Effects(String imageLocation,
+                   String imageLocation2,
+                   String imageLocation3,
+                   String UID, 
+                   Vector2f position,
+                   Vector2f size){
+        super(imageLocation, imageLocation2, imageLocation3, UID, position, size);
+    }
+    
     protected void update_Effect(float tpf){
         
     }
 
     public void event_ButtonEffect(){
-        if(buttonEffect == ButtonEffect.APPEAR_DISAPPEAR){
+        if(effect == Effect.APPEAR_DISAPPEAR){
             if(visible){
                 setVisible(false);
             }else{
@@ -46,15 +55,15 @@ public class Effects extends Elements{
     /**
      * @return the buttonEffect
      */
-    public ButtonEffect getButtonEffect() {
-        return buttonEffect;
+    public Effect getEffect() {
+        return effect;
     }
 
     /**
-     * @param buttonEffect the buttonEffect to set
+     * @param effect the buttonEffect to set
      */
-    public void setButtonEffect(ButtonEffect buttonEffect) {
-        this.buttonEffect = buttonEffect;
+    public void setEffect(Effect effect) {
+        this.effect = effect;
     }
 
 }

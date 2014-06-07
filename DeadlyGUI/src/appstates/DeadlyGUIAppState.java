@@ -23,6 +23,7 @@ import deadlygui.AllEnums;
 import deadlygui.controls.ui.ButtonControl;
 import deadlygui.controls.ui.LabelControl;
 import deadlygui.controls.ui.LayerControl;
+import deadlygui.controls.ui.MetersControl;
 
 /**
  *
@@ -41,6 +42,7 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     
     LayerControl layer;
     public ChaseCamera chaseCamera;
+    MetersControl meter;
     
     private boolean leftClick = false;
     
@@ -91,7 +93,7 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
                                                 "Label1",
                                                 new Vector2f(.5f, .5f),
                                                 new Vector2f(.2f, .1f));
-        label1.setButtonEffect(AllEnums.ButtonEffect.APPEAR_DISAPPEAR);
+        label1.setEffect(AllEnums.Effect.APPEAR_DISAPPEAR);
 //        label1.setVisible(false);
         
         
@@ -102,8 +104,18 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
                                                    new Vector2f(.1f, .1f),
                                                    new Vector2f(.2f, .1f));
         
+        meter = new MetersControl("Textures/DeadlyGUIImages/DeadlyMeters.png",
+                                "Textures/DeadlyGUIImages/DeadlyBar.png",
+                                "Textures/DeadlyGUIImages/DeadlyMeters.png",
+                                "Meter1",
+                                new Vector2f(.25f, .9f),
+                                new Vector2f(.5f, .05f));
+        
+        meter.setEffect(AllEnums.Effect.HORIZONTAL);
+        
         guiNode.addControl(label1);
         guiNode.addControl(button1);
+        guiNode.addControl(meter);
     }
     
     public void onAction(String name, boolean isPressed, float tpf) {
@@ -112,6 +124,8 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         }
     }
     
+    float percentage = 0;
+    int dir = 1;
     @Override
     public void update(float tpf) {
         if(leftClick){
@@ -121,5 +135,16 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         }else{
             layer.setMouseLeftClick(false);
         }
+        
+        percentage += (.3 * tpf * dir);
+        if(percentage > 1.0f){
+            percentage = 1.0f;
+            dir = -1;
+        }else if(percentage < 0.0f){
+            percentage = 0.0f;
+            dir = 1;
+        }
+        
+        meter.setPercentage(percentage);
     }
 }

@@ -30,9 +30,11 @@ public class LabelControl extends Effects implements Control{
     
     private boolean init = false;
     
-    public LabelControl(String imageLocation, String UID, 
-            Vector2f position, Vector2f size){
-        super(imageLocation, UID, position, size);
+    public LabelControl(String background,
+                        String UID, 
+                        Vector2f position,
+                        Vector2f size){
+        super(background, UID, position, size);
     }
 
     public void update(float tpf) {
