@@ -1,0 +1,23 @@
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\MyGame.ap_ \
+ : C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\res\layout\main.xml \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\res\values\strings.xml \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Interface \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\MatDefs \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Materials \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\META-INF \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Models \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Scenes \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Shaders \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Sounds \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Materials\Cube.j3m \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\META-INF\MANIFEST.MF \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Models\DeadlyCube \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Models\DeadlyCube\DeadlyCube1.mesh.j3o \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\K_Logo \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyButton.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyButton_H.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyLabel.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\K_Logo\DeadlyCube1.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\AndroidManifest.xml \

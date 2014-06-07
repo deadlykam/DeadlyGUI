@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:4
+-keep class com.mycompany.mygame.MainActivity { <init>(...); }
+

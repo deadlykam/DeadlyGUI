@@ -1,0 +1,25 @@
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes.dex : \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes\com\mycompany\mygame\BuildConfig.class \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes\com\mycompany\mygame\MainActivity.class \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes\com\mycompany\mygame\R$attr.class \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes\com\mycompany\mygame\R$layout.class \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes\com\mycompany\mygame\R$string.class \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\classes\com\mycompany\mygame\R.class \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-jogg-ad72bd8c1f5bc14a7f1ecbcf6efb39df.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-android-d2d25d4669ad682292863e0d705aa986.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-plugins-9c0bcd23e3d749d72b6b3d64976bb820.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\nifty-default-controls-ed186a866503eec09fa18197954a494c.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-niftygui-90b5e2ab2a2531fb4c212531bf5e5fa3.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-core-b1e37c82bd68fe3bcfd89a3c28edf6e1.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\MyGame-44c141860717ff0a46b584eb07b567f1.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\annotations-05d082916c6c54f2b398ffbbb657a085.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\j-ogg-vorbisd-555294bccfc2b5090febb271193ee37c.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\nifty-style-black-92b38bacfa6d46372e599d65df0e84fd.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\j-ogg-oggd-ad678e6ebeec6452c2d314cb848ede27.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\eventbus-0da477bdd738cf21d49f4ab643dac748.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-bullet-5d4a05104dcf782803ea998a9b356770.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-terrain-ff7d9924f81b5b8145c6bbd122f4b511.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-effects-01a2c20c7378c41ea4f85f230650867d.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\xmlpull-xpp3-0a3afde4711516a4a2f37e444f8be56e.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\jME3-networking-81a082256a113be3203fa79fba931883.jar \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\dexedLibs\nifty-44575537c1ef3ed04f8778f8146e14bb.jar \

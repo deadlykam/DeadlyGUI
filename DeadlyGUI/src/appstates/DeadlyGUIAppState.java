@@ -9,6 +9,7 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
+import com.jme3.input.ChaseCamera;
 import com.jme3.input.InputManager;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
@@ -17,6 +18,7 @@ import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import com.jme3.system.AppSettings;
 import control.deadlygui.ui.ButtonControl;
 import control.deadlygui.ui.LabelControl;
@@ -35,7 +37,10 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     private Camera            cam;
     private AppSettings       settings;
 
+    Spatial deadlyCube;
+    
     LayerControl layer;
+    public ChaseCamera chaseCamera;
     
     public DeadlyGUIAppState(AppSettings settings){
         this.settings = settings;
@@ -53,12 +58,27 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         
         setupKeys();
         setupHUD();
+        loadDeadlyCube();
+        setupChaseCamera();
     }
     
     private void setupKeys(){
         inputManager.addMapping("LeftClick", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
         
         inputManager.addListener(this, "LeftClick");
+    }
+    
+    private void loadDeadlyCube(){
+        deadlyCube = assetManager.loadModel("Models/DeadlyCube/DeadlyCube1.mesh.j3o");
+        
+        app.getRootNode().attachChild(deadlyCube);
+    }
+    
+    private void setupChaseCamera(){
+        chaseCamera = new ChaseCamera(cam, deadlyCube, inputManager);
+//        chaseCamera.setDragToRotate(false);
+        chaseCamera.setDefaultDistance(10f);
+//        chaseCamera.setEnabled(false);
     }
     
     private void setupHUD(){
