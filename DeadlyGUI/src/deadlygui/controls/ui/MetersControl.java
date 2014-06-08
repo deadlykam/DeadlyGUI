@@ -12,6 +12,7 @@ import com.jme3.export.OutputCapsule;
 import com.jme3.math.Vector2f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
@@ -90,7 +91,7 @@ public class MetersControl extends Effects implements Control{
         layerControl.getApp().getGuiNode().attachChild(image2);
         
         image3 = new Picture(UID + "_Bar");
-        image3.setImage(layerControl.getApp().getAssetManager(), imageLocation3, true);
+        image3.setImage(layerControl.getApp().getAssetManager(), imageLocation3, false);
         image3.setWidth(layerControl.getSettings().getWidth() * size.getX());
         image3.setHeight(layerControl.getSettings().getHeight() * size.getY());
         image3.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);

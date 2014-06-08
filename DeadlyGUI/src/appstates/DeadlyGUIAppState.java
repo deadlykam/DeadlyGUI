@@ -24,6 +24,7 @@ import deadlygui.controls.ui.ButtonControl;
 import deadlygui.controls.ui.LabelControl;
 import deadlygui.controls.ui.LayerControl;
 import deadlygui.controls.ui.MetersControl;
+import deadlygui.controls.ui.ScrollControl;
 
 /**
  *
@@ -42,9 +43,10 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     
     LayerControl layer;
     public ChaseCamera chaseCamera;
-    MetersControl meter;
+    MetersControl meter, meter2;
+    ScrollControl scroll;
     
-    private boolean leftClick = false;
+    private boolean leftClick = false, leftClickHold = false;
     
     public DeadlyGUIAppState(AppSettings settings){
         this.settings = settings;
@@ -106,21 +108,49 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         
         meter = new MetersControl("Textures/DeadlyGUIImages/DeadlyMeters.png",
                                 "Textures/DeadlyGUIImages/DeadlyBar.png",
-                                "Textures/DeadlyGUIImages/DeadlyMeters.png",
+                                "Textures/DeadlyGUIImages/InvisibleBar.png",
                                 "Meter1",
-                                new Vector2f(.25f, .9f),
+                                new Vector2f(.25f, .87f),
                                 new Vector2f(.5f, .05f));
         
         meter.setEffect(AllEnums.Effect.HORIZONTAL);
         
+        meter2 = new MetersControl("Textures/DeadlyGUIImages/DeadlyMeters.png",
+                                "Textures/DeadlyGUIImages/DeadlyBar.png",
+                                "Textures/DeadlyGUIImages/InvisibleBar.png",
+                                "Meter2",
+                                new Vector2f(.25f, .95f),
+                                new Vector2f(.5f, .05f));
+        
+        meter2.setEffect(AllEnums.Effect.HORIZONTAL);
+        
+        scroll = new ScrollControl("Textures/DeadlyGUIImages/Scroll.png",
+                                "Textures/DeadlyGUIImages/LeftArrow.png",
+                                "Textures/DeadlyGUIImages/RightArrow.png",
+                                "Textures/DeadlyGUIImages/ScrollBar.png",
+                                "Scroll1",
+                                new Vector2f(.2f, .8f),
+                                new Vector2f[]{new Vector2f(0.5f, 0.05f), new Vector2f(0.05f, 0.05f), new Vector2f(0.05f, 0.05f), new Vector2f(0.05f, 0.05f)});
+        scroll.setOffset(.5f);
+        
         guiNode.addControl(label1);
         guiNode.addControl(button1);
         guiNode.addControl(meter);
+        guiNode.addControl(meter2);
+        guiNode.addControl(scroll);
     }
     
     public void onAction(String name, boolean isPressed, float tpf) {
         if(name.equals("LeftClick") && !isPressed){
             leftClick = true;
+        }
+        
+        if(name.equals("LeftClick")){
+            if(isPressed){
+                leftClickHold = true;
+            }else{
+                leftClickHold = false;
+            }
         }
     }
     
@@ -136,6 +166,14 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
             layer.setMouseLeftClick(false);
         }
         
+        if(leftClickHold){
+            layer.setMouseLeftClickHold(true);
+            layer.setMousePosition(inputManager.getCursorPosition());
+        }else{
+            layer.setMouseLeftClickHold(false);
+        }
+        
+        
         percentage += (.3 * tpf * dir);
         if(percentage > 1.0f){
             percentage = 1.0f;
@@ -146,5 +184,6 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         }
         
         meter.setPercentage(percentage);
+        meter2.setPercentage(scroll.getPercentage());
     }
 }

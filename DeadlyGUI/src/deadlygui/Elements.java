@@ -19,9 +19,11 @@ public class Elements {
     protected Picture image;
     protected Picture image2;
     protected Picture image3;
+    protected Picture image4;
     protected String imageLocation = "";
     protected String imageLocation2 = "";
     protected String imageLocation3 = "";
+    protected String imageLocation4 = "";
     protected String UID = "";
     protected Vector2f position = new Vector2f();
     protected Vector2f size = new Vector2f();
@@ -63,6 +65,48 @@ public class Elements {
         this.size = size;
     }
     
+    public Elements(String imageLocation,
+                    String imageLocation2,
+                    String imageLocation3,
+                    String imageLocation4,
+                    String UID, 
+                    Vector2f position,
+                    Vector2f size){
+        this.imageLocation = imageLocation;
+        this.imageLocation2 = imageLocation2;
+        this.imageLocation3 = imageLocation3;
+        this.imageLocation4 = imageLocation4;
+        this.UID = UID;
+        this.position = position;
+        this.size = size;
+    }
+    
+    public Elements(String imageLocation,
+                    String imageLocation2,
+                    String imageLocation3,
+                    String imageLocation4,
+                    String UID){
+        this.imageLocation = imageLocation;
+        this.imageLocation2 = imageLocation2;
+        this.imageLocation3 = imageLocation3;
+        this.imageLocation4 = imageLocation4;
+        this.UID = UID;
+    }
+    
+    public Elements(String imageLocation,
+                    String imageLocation2,
+                    String imageLocation3,
+                    String imageLocation4,
+                    String UID,
+                    Vector2f position){
+        this.imageLocation = imageLocation;
+        this.imageLocation2 = imageLocation2;
+        this.imageLocation3 = imageLocation3;
+        this.imageLocation4 = imageLocation4;
+        this.position = position;
+        this.UID = UID;
+    }
+    
     /**
      * Checks the visible boolean and sets the cullhint
      */
@@ -77,6 +121,10 @@ public class Elements {
             if(image3 != null){
                 image3.setCullHint(Spatial.CullHint.Dynamic);
             }
+            
+            if(image4 != null){
+                image4.setCullHint(Spatial.CullHint.Dynamic);
+            }
         }else{
             image.setCullHint(Spatial.CullHint.Always);
             
@@ -86,6 +134,10 @@ public class Elements {
             
             if(image3 != null){
                 image3.setCullHint(Spatial.CullHint.Always);
+            }
+            
+            if(image4 != null){
+                image4.setCullHint(Spatial.CullHint.Always);
             }
         }
     }

@@ -16,8 +16,11 @@ C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Models\Deadly
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Models\DeadlyCube\DeadlyCube1.mesh.j3o \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\K_Logo \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyBar.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyButton.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyButton_H.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyLabel.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyMeters.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\InvisibleBar.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\K_Logo\DeadlyCube1.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\AndroidManifest.xml \

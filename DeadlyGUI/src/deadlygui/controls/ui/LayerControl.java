@@ -30,6 +30,7 @@ public class LayerControl extends AbstractControl{
     private SimpleApplication app;
     private AppSettings settings;
     private boolean mouseLeftClick = false;
+    private boolean mouseLeftClickHold = false;
     private Vector2f mousePosition = new Vector2f();
     
     public LayerControl(){}
@@ -124,6 +125,20 @@ public class LayerControl extends AbstractControl{
      */
     public void setMousePosition(Vector2f mousePosition) {
         this.mousePosition = mousePosition;
+    }
+
+    /**
+     * @return the mouseLeftClickHold
+     */
+    public boolean isMouseLeftClickHold() {
+        return mouseLeftClickHold;
+    }
+
+    /**
+     * @param mouseLeftClickHold the mouseLeftClickHold to set
+     */
+    public void setMouseLeftClickHold(boolean mouseLeftClickHold) {
+        this.mouseLeftClickHold = mouseLeftClickHold;
     }
 
 

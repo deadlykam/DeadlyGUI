@@ -38,6 +38,33 @@ public class Effects extends Elements{
         super(imageLocation, imageLocation2, imageLocation3, UID, position, size);
     }
     
+    public Effects(String imageLocation,
+                   String imageLocation2,
+                   String imageLocation3,
+                   String imageLocation4,
+                   String UID, 
+                   Vector2f position,
+                   Vector2f size){
+        super(imageLocation, imageLocation2, imageLocation3, imageLocation4, UID, position, size);
+    }
+    
+    public Effects(String imageLocation,
+                   String imageLocation2,
+                   String imageLocation3,
+                   String imageLocation4,
+                   String UID){
+        super(imageLocation, imageLocation2, imageLocation3, imageLocation4, UID);
+    }
+    
+    public Effects(String imageLocation,
+                   String imageLocation2,
+                   String imageLocation3,
+                   String imageLocation4,
+                   String UID,
+                   Vector2f position){
+        super(imageLocation, imageLocation2, imageLocation3, imageLocation4, UID, position);
+    }
+    
     protected void update_Effect(float tpf){
         
     }
