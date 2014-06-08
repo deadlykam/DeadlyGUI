@@ -22,5 +22,9 @@ C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\Dead
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyLabel.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\DeadlyMeters.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\InvisibleBar.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\LeftArrow.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\RightArrow.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\Scroll.png \
+C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\DeadlyGUIImages\ScrollBar.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\assets\Textures\K_Logo\DeadlyCube1.png \
 C:\Users\Kamran\Documents\GitHub\DeadlyGUI\DeadlyGUI\mobile\bin\AndroidManifest.xml \

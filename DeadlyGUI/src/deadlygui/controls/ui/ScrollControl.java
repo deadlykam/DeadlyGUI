@@ -76,6 +76,15 @@ public class ScrollControl extends Effects implements Control{
                     moveScrollBar(1, tpf);
                 }
             }
+            
+            if(layerControl.isMouseLeftClick()){
+                if(layerControl.getMousePosition().x >= (layerControl.getSettings().getWidth() * P1x) && 
+                   layerControl.getMousePosition().x <= ((layerControl.getSettings().getWidth() * P1x) + (layerControl.getSettings().getWidth() * sizes[0].x)) && 
+                   layerControl.getMousePosition().y >= (layerControl.getSettings().getHeight()* position.y) && 
+                   layerControl.getMousePosition().y <= ((layerControl.getSettings().getHeight()* position.y) + (layerControl.getSettings().getHeight()* sizes[0].y))){
+                    instantMove();
+                }
+            }
         }
     }
 
@@ -99,6 +108,18 @@ public class ScrollControl extends Effects implements Control{
             image4.setPosition(layerControl.getSettings().getWidth() * ((sizes[0].x * percentage) + P1x), layerControl.getSettings().getHeight() * position.y);
         }
         System.out.println("Percentage: " + percentage);
+    }
+    
+    private void instantMove(){
+        float lengthFromMouse = layerControl.getMousePosition().x - layerControl.getSettings().getWidth() * P1x;
+        float length = (layerControl.getSettings().getWidth() * P2x) - layerControl.getSettings().getWidth() * P1x;
+        percentage = lengthFromMouse / length;
+        System.out.println("Percentage: " + percentage);
+        if(percentage >= (1.0f - (sizes[3].x * 2))){
+            image4.setPosition(layerControl.getSettings().getWidth() * ((sizes[0].x * (1 - (sizes[3].x * 2))) + P1x), layerControl.getSettings().getHeight() * position.y);
+        }else{   
+            image4.setPosition(layerControl.getSettings().getWidth() * ((sizes[0].x * percentage) + P1x), layerControl.getSettings().getHeight() * position.y);
+        }
     }
     
     private void init(){
