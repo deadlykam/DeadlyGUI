@@ -99,8 +99,8 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
 //        label1.setVisible(false);
         
         
-        ButtonControl button1 = new ButtonControl("Textures/DeadlyGUIImages/DeadlyButton.png",
-                                                  "Textures/DeadlyGUIImages/DeadlyButton_H.png",
+        ButtonControl button1 = new ButtonControl("Textures/DeadlyGUIImages/Button2.png",
+                                                  "Textures/DeadlyGUIImages/Button2_Glow.png",
                                                   "Button1",
                                                   "Label1",
                                                    new Vector2f(.1f, .1f),
