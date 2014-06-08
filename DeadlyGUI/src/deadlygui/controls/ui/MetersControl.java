@@ -91,7 +91,7 @@ public class MetersControl extends Effects implements Control{
         layerControl.getApp().getGuiNode().attachChild(image2);
         
         image3 = new Picture(UID + "_Bar");
-        image3.setImage(layerControl.getApp().getAssetManager(), imageLocation3, false);
+        image3.setImage(layerControl.getApp().getAssetManager(), imageLocation3, true);
         image3.setWidth(layerControl.getSettings().getWidth() * size.getX());
         image3.setHeight(layerControl.getSettings().getHeight() * size.getY());
         image3.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
