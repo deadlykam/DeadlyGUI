@@ -96,7 +96,7 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
                                                 new Vector2f(.5f, .5f),
                                                 new Vector2f(.2f, .1f));
         label1.setEffect(AllEnums.Effect.APPEAR_DISAPPEAR);
-//        label1.setVisible(false);
+        label1.setVisible(false);
         
         
         ButtonControl button1 = new ButtonControl("Textures/DeadlyGUIImages/Button2.png",
@@ -161,8 +161,8 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
     
     float percentage = 0;
     int dir = 1;
-    @Override
-    public void update(float tpf) {
+    
+    private void updateDeadlyGUI(float tpf){
         if(leftClick){
             layer.setMouseLeftClick(true);
             layer.setMousePosition(inputManager.getCursorPosition());
@@ -190,5 +190,10 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
         
         meter.setPercentage(percentage);
         meter2.setPercentage(scroll.getPercentage());
+    }
+    
+    @Override
+    public void update(float tpf) {
+        updateDeadlyGUI(tpf);
     }
 }

@@ -153,6 +153,8 @@ public class ScrollControl extends Effects implements Control{
         image4.setHeight(layerControl.getSettings().getHeight() * sizes[3].getY());
         image4.setPosition(layerControl.getSettings().getWidth() * P1x, layerControl.getSettings().getHeight() * position.y);
         layerControl.getApp().getGuiNode().attachChild(image4);
+        
+        checkVisible();
     }
     
     @Override

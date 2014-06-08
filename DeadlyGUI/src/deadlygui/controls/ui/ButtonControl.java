@@ -124,6 +124,8 @@ public class ButtonControl extends Effects implements Control{
             image2.setCullHint(Spatial.CullHint.Always);
             layerControl.getApp().getGuiNode().attachChild(image2);
         }
+        
+        checkVisible();
     }
     
     @Override

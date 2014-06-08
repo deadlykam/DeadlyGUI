@@ -112,7 +112,9 @@ public class Elements {
      */
     protected void checkVisible(){
         if(visible){
-            image.setCullHint(Spatial.CullHint.Dynamic);
+            if(image != null){
+                image.setCullHint(Spatial.CullHint.Dynamic);
+            }
             
             if(image2 != null){
                 image2.setCullHint(Spatial.CullHint.Dynamic);
@@ -126,7 +128,9 @@ public class Elements {
                 image4.setCullHint(Spatial.CullHint.Dynamic);
             }
         }else{
-            image.setCullHint(Spatial.CullHint.Always);
+            if(image != null){
+                image.setCullHint(Spatial.CullHint.Always);
+            }
             
             if(image2 != null){
                 image2.setCullHint(Spatial.CullHint.Always);

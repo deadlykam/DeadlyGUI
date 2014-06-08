@@ -96,6 +96,8 @@ public class MetersControl extends Effects implements Control{
         image3.setHeight(layerControl.getSettings().getHeight() * size.getY());
         image3.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
         layerControl.getApp().getGuiNode().attachChild(image3);
+        
+        checkVisible();
     }
     
     @Override
