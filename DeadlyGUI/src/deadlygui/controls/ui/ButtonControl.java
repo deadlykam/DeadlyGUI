@@ -90,11 +90,15 @@ public class ButtonControl extends Effects implements Control{
                             }
                         }
                     }
+                    selected = true;
                 }
 //                System.out.println("Button Click");
             }else if(image2 != null){
                 image2.setCullHint(Spatial.CullHint.Always);
                 image.setCullHint(Spatial.CullHint.Dynamic);
+                selected = false;
+            }else{
+                selected = false;
             }
         }
     }
