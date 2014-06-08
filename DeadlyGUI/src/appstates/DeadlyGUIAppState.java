@@ -106,6 +106,11 @@ public class DeadlyGUIAppState extends AbstractAppState implements ActionListene
                                                    new Vector2f(.1f, .1f),
                                                    new Vector2f(.2f, .1f));
         
+        ButtonControl button2 = new ButtonControl("Textures/DeadlyGUIImages/Button2.png",
+                                                  "Button1",
+                                                   new Vector2f(.1f, .1f),
+                                                   new Vector2f(.2f, .1f));
+        
         meter = new MetersControl("Textures/DeadlyGUIImages/DeadlyMeters.png",
                                 "Textures/DeadlyGUIImages/DeadlyBar.png",
                                 "Textures/DeadlyGUIImages/InvisibleBar.png",

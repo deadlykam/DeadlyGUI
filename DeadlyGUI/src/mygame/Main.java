@@ -40,10 +40,6 @@ public class Main extends SimpleApplication {
         stateManager.attach(deadlyGUIAppState);
     }
     
-    private void loadDeadlyCube(){
-        rootNode.attachChild(assetManager.loadModel("Models/DeadlyCube/DeadlyCube1.mesh.j3o"));
-    }
-    
     @Override
     public void simpleUpdate(float tpf) {
         //TODO: add update code

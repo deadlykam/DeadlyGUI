@@ -29,6 +29,22 @@ public class ButtonControl extends Effects implements Control{
     
     private boolean init = false;
     
+    public ButtonControl(String defaultImage,
+                         String UID, 
+                         Vector2f position,
+                         Vector2f size){
+        super(defaultImage, UID, position, size);
+    }
+    
+    public ButtonControl(String defaultImage,
+                         String UID, 
+                         Vector2f position,
+                         Vector2f size,
+                         String target){
+        super(defaultImage, UID, position, size);
+        
+        this.target = target;
+    }
     
     public ButtonControl(String defaultImage,
                          String clickImage,
@@ -60,9 +76,10 @@ public class ButtonControl extends Effects implements Control{
                    layerControl.getMousePosition().x <= ((layerControl.getSettings().getWidth() * position.x) + (layerControl.getSettings().getWidth() * size.x)) && 
                    layerControl.getMousePosition().y >= (layerControl.getSettings().getHeight()* position.y) && 
                    layerControl.getMousePosition().y <= ((layerControl.getSettings().getHeight()* position.y) + (layerControl.getSettings().getHeight()* size.y))){
-                    image2.setCullHint(Spatial.CullHint.Dynamic);
-                    image.setCullHint(Spatial.CullHint.Always);
-                    
+                    if(image2 != null){
+                        image2.setCullHint(Spatial.CullHint.Dynamic);
+                        image.setCullHint(Spatial.CullHint.Always);
+                    }
                     if(!target.equals("")){
                         for(int i = 0; i < spatial.getNumControls(); i++){
                             if(spatial.getControl(i) instanceof LabelControl){
@@ -75,7 +92,7 @@ public class ButtonControl extends Effects implements Control{
                     }
                 }
 //                System.out.println("Button Click");
-            }else{
+            }else if(image2 != null){
                 image2.setCullHint(Spatial.CullHint.Always);
                 image.setCullHint(Spatial.CullHint.Dynamic);
             }
@@ -94,13 +111,15 @@ public class ButtonControl extends Effects implements Control{
         image.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
         layerControl.getApp().getGuiNode().attachChild(image);
         
-        image2 = new Picture(UID + "_hover");
-        image2.setImage(layerControl.getApp().getAssetManager(), imageLocation2, true);
-        image2.setWidth(layerControl.getSettings().getWidth() * size.getX());
-        image2.setHeight(layerControl.getSettings().getHeight() * size.getY());
-        image2.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
-        image2.setCullHint(Spatial.CullHint.Always);
-        layerControl.getApp().getGuiNode().attachChild(image2);
+        if(!imageLocation2.equals("")){
+            image2 = new Picture(UID + "_hover");
+            image2.setImage(layerControl.getApp().getAssetManager(), imageLocation2, true);
+            image2.setWidth(layerControl.getSettings().getWidth() * size.getX());
+            image2.setHeight(layerControl.getSettings().getHeight() * size.getY());
+            image2.setPosition(layerControl.getSettings().getWidth() * position.x, layerControl.getSettings().getHeight() * position.y);
+            image2.setCullHint(Spatial.CullHint.Always);
+            layerControl.getApp().getGuiNode().attachChild(image2);
+        }
     }
     
     @Override
@@ -135,8 +154,4 @@ public class ButtonControl extends Effects implements Control{
     public void setSpatial(Spatial spatial) {
         this.spatial = spatial;
     }
-
-    
-
-
 }
